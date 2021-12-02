@@ -18,10 +18,10 @@
       </td>
       @if($d['type']=='create_account')
       <td>Created Account <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance
-        <span class="pi-coin">{{floatval($d['starting_balance'])}}</span>  π
+        <span class="pi-coin">{{floatval($d['starting_balance'])}}π</span>  
       </td>
       @else
-      <td>Pay<span class="pi-coin">{{floatval($d['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a></td>
+      <td>Pay<span class="pi-coin">{{floatval($d['amount'])}}π</span>  to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a></td>
       @endif
      
       <td>

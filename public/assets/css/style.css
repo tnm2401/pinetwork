@@ -1,7 +1,6 @@
 *{box-sizing: border-box;padding: 0;margin: 0;}
 body{
-    font-size: var(--MainFontSize);
-    font-family: 'M PLUS 2', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #eeeeee;
     position: relative;
 }
@@ -16,8 +15,30 @@ body{
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 0 20px;
     box-shadow: 0 1px 3px grey;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.footer{
+    background: rgb(34, 34, 34);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 0 20px 0 0 ;
+    box-shadow: 0 1px 3px grey;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: white;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer a{
+    color: white;
+    text-decoration: none;
 }
 .header ul{
     list-style: none;
@@ -64,15 +85,16 @@ body{
     margin-left: 15px;
     font-weight: bold;
 }
-.header .x .lang i{
+.header .x i.lang{
     color: white;
-    font-size: 24px;
+    /* font-size: 24px; */
+    font-style: normal;
     position: relative;
 }
-.header .x .lang i:hover > .list{
+.header .x i.lang:hover > .list{
     display: block;
 }
-.header .x .lang i .list{
+.header .x i.lang .list{
     width: 160px;
     position: absolute;
     top: 100%;
@@ -87,7 +109,7 @@ body{
     transition: 0.2s linear;
 }
 
-.header .x .lang i .list a{
+.header .x i.lang .list a{
    padding: 7px 15px;
    display: block;
 }
@@ -96,28 +118,16 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-.none{
-    border: none;
-    background-color: #2c4982;
-   display: inline-block;
-    color: white;
- 
-
-}
 .systemMenu{
     border-radius: 10px;
     background-color: #8c3590;
     color: white;
-    padding: 5px 15px;
+    padding: 10px 20px;
     box-shadow: 1px 1px 2px grey;
 }
 .systemMenu i{
     width: 20px;
     margin-right: 3px;
-}
-.systemMenu:hover{
-    cursor: pointer;
-    background-color: #7b2d80;
 }
 .search{
     display: flex;
@@ -159,6 +169,7 @@ body{
 .main .top{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     padding: 10px;
     align-items: center;
@@ -174,28 +185,54 @@ body{
 .main table{
     width: 100%;
     box-shadow: 1px 1px 2px grey;
-    border-radius: 15px;
+    border-radius: 0 15px;
     overflow: hidden;
 }
-.main .thanh-toan{
+.main .space{
     width: 100%;
 }
-.thanh-toan .top span{
+.space .top a{
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 20px;
+    box-shadow: 1px 1px 3px grey;
+    border:solid 1px #00000000;
+    transition: 0.2s linear;
+}
+.space .top a:hover{
+    box-shadow: 0 0 2px grey;
+}
+.space .top h3 span{
+    font-size: 90%;
+}
+.space .top span.paginate{
     border-radius: 10px;
     box-shadow: 1px 1px 2px grey;
-    padding: 5px 15px;
+    padding: 10px 20px;
     color: white;
     background-color: #2c4982;
 }
+.main table tr{
+    text-align: left;
+    padding: 10px 12px;
+    background-color: #fcfcfc;
+}
+.main table tr:nth-child(2n){
+    text-align: left;
+    padding: 10px 12px;
+    background-color: #efe3ff;
+}
 .main table tr th{
     text-align: left;
-    padding: 5px 10px;
+    padding: 10px 12px;
     background-color: #5f3e89;
     color: rgb(255, 255, 255);
 }
 .main table tr td{
-    padding: 5px 10px;
-    background-color: white;
+    padding: 10px 12px;
+}
+.main table tr td a{
+    font-weight: 700;
 }
 .background-white{
     background-color: white;
@@ -206,18 +243,16 @@ body{
     overflow: hidden;
 }
 .main table td.name{
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
+    text-align: center;
 }
 .main table td.name a{
     text-transform: uppercase;
-    padding: 0 7px;
+    padding: 5px 10px;
     background-color: #8c3590;
     color: white;
     text-decoration: none;
     border-radius: 3px;
-    /* text-align: center; */
+    text-align: center;
 }
 .main table a{
     text-decoration: none;
@@ -229,10 +264,63 @@ body{
     border-radius: 4px;
     margin-left: 10px;
 }
+.row{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.mini-tab{
+    flex-basis: 49%;
+}
+@media screen and (max-width: 768px) {
+    .tableResponsive table{
+        width: 100vw;
+    }
+    .tableResponsive table tr{
+        width: 100;
+    }
+    .tableResponsive table th{
+        display: none;
+    }
+    .tableResponsive tr td{
+       display: block;
+       text-align: right;
+       position: relative;
+       background: palegreen;
+    }
+    .tableResponsive tr td::before{
+       content: attr(data-label);
+       position: absolute;
+       left: 0;
+       padding-left: 15px;
+    }
+    .tableResponsive table td{
+        max-width: 100%;
+    }
+    .tableResponsive table td.id{
+        text-align: right;
+        max-width: 100%;
+        overflow: hidden;
+
+    }
+    .tableResponsive table td.id span{
+        max-width: 40%;
+        display: block;
+        text-align: right;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .mini-tab{
+        flex-basis: 100%;
+        margin-bottom: 10px;
+    }
+}
+
 
 .loader {
     background: #8c3590;
-    linear-gradient(to right, #8c3590, #2c4982) ;
+    background: linear-gradient(to right, #8c3590, #2c4982) ;
     bottom: 0;
     left: 0;
     overflow: hidden;

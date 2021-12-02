@@ -4,7 +4,6 @@
     <div class="pace-cover"></div>
     <div id="st-container" class="st-container st-effect">
       <div class="main_containers">
-        <!-- LEFT PRIMARY NAVIGATION -->
 
         <!-- TOP SECONDARY NAVIGATION -->
         <div class="top_nav">
