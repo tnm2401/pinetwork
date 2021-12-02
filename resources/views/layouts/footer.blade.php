@@ -1,8 +1,8 @@
 
 </div>
 
-<div class="footer">
-  <span>Shin &copy; 2021</span>
+<div class="container footer">
+  <span>Shin | 2021</span>
   <a href="">SrcCode</a>
 </div>
 
