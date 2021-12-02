@@ -17,6 +17,9 @@ Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name("i
 Route::get('/ajax-operations', [\App\Http\Controllers\MainController::class, 'load_operations'])->name("load-operation");
 Route::get('/ajax-transactions', [\App\Http\Controllers\MainController::class, 'load_transactions'])->name("load-transaction");
 Route::get('/ajax-blocks', [\App\Http\Controllers\MainController::class, 'load_blocks'])->name("load-block");
+Route::get('/ajax-blocks-home', [\App\Http\Controllers\MainController::class, 'load_blocks_home'])->name("load-blocks-home");
+Route::get('/ajax-transactions-home', [\App\Http\Controllers\MainController::class, 'load_transactions_home'])->name("load-transactions-home");
+
 
 
 Route::get('/payments', [\App\Http\Controllers\MainController::class, 'get_payment'])->name("get_payment");
@@ -33,3 +36,5 @@ Route::post('/blocks', [\App\Http\Controllers\MainController::class, 'get_blocks
 
 ///get detail info account , block, hash
 Route::get('/hash/{value}', [\App\Http\Controllers\MainController::class, 'hash_detail'])->name("hash_detail");
+Route::get('/block/{value}', [\App\Http\Controllers\MainController::class, 'block_detail'])->name("block_detail");
+

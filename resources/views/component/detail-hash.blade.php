@@ -1,13 +1,13 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | Transaction
+    Pi Blockexploer | Transaction {{$data['2']['hash']}}
 @endsection
 @section('main')
 
 <div class="main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
-            <h3>TRANSACTION <span>{{$data['hash']}}</span></h3>
+            <h3>TRANSACTION <span>{{$data['2']['hash']}}</span></h3>
         </div>
         <table>
            
@@ -16,7 +16,7 @@
                     Time
                 </td>
                 <td>
-                    {{ \Carbon\Carbon::parse($data['created_at'])->toDateTimeString() }}
+                    {{ \Carbon\Carbon::parse($data['2']['created_at'])->toDateTimeString() }}
                 </td>
             </tr>
             <tr>
@@ -24,7 +24,7 @@
                     Fee
                 </td>
                 <td>
-                    {{$data['fee_charged']/1000000}} π
+                    {{$data['2']['fee_charged']/1000000}} π
                 </td>
             </tr>
             <tr>
@@ -32,11 +32,11 @@
                     Block
                 </td>
                 <td>
-                    {{$data['ledger']}}
+                    {{$data['2']['ledger']}}
                 </td>
             </tr>
             <tr>
-                <td colspan="2">Memo ({{$data['memo_type']}})</td>
+                <td colspan="2">Memo ({{$data['2']['memo_type']}})</td>
             </tr>
         </table>
     </div>
@@ -60,17 +60,17 @@
             </tr>
             <tr>
                 <td class="name">
-                   <a href="">{{ \Illuminate\Support\Str::limit($data['source_account'], 4, $end='') }}</a>
+                   <a href="">{{ \Illuminate\Support\Str::limit($data['1']['source_account'], 4, $end='') }}</a>
                 </td>
                 <td>
-                    @if($data['_link']=='payments')
-                    Pay<span class="pi-coin">{{floatval($data['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($data['to'], 4, $end='') }}</a>
+                    @if($data['1']['type_i'] != 0)
+                    Pay<span class="pi-coin">{{floatval($data['1']['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($data['1']['to'], 4, $end='') }}</a>
                     @else
-                    Thanh toán 20 Test-π đến <a href="">GD32</a>
+                    Created Account <a href="">{{ \Illuminate\Support\Str::limit($data['1']['account'], 4, $end='') }}</a> with balance {{floatval($data['1']['starting_balance'])}}
                     @endif
                 </td>
                 <td>
-                    26/11/2021 15:42
+                    <a href=""> {{ \Carbon\Carbon::parse($data['1']['created_at'])->diffForHumans() }}</a>
                 </td>
             </tr>
         </table>

@@ -62,6 +62,7 @@
         </table>
     </div>
 </div>
+
 <script type="text/javascript">
     var auto_refresh = setInterval(
     function ()

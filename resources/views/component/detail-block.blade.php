@@ -1,13 +1,13 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | Transaction Detail
+    Pi Blockexploer | Ledger {{$data['2']['sequence']}}
 @endsection
 @section('main')
 <div class="main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
-            <h3>LEDGER <span>4818880</span></h3>
-            <span class="paginate">json</span>
+            <h3>BLOCK <span>{{$data['2']['sequence']}}</span></h3>
+            {{-- <span class="paginate">json</span> --}}
         </div>
         <div class="row">
             <div class="mini-tab">
@@ -15,10 +15,10 @@
            
                     <tr>
                         <td>
-                            Thời gian
+                            Time
                         </td>
                         <td>
-                            26/11/2021 15:42
+                            {{ \Carbon\Carbon::parse($data['2']['closed_at'])->toDateTimeString() }}
                         </td>
                     </tr>
                     <tr>
@@ -26,39 +26,39 @@
                             Hash
                         </td>
                         <td class="id">
-                            aaeec895fc4ebf30da8182f753a3bb55331fbd307446a1f062426a18b427e4fc
+                            {{$data['2']['hash']}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Trước Hash
+                            Prev Hash	
                         </td>
                         <td class="id">
-                            aaeec895fc4ebf30da8182f753a3bb55331fbd307446a1f062426a18b427e4fc
+                          <a href=""> {{$data['2']['prev_hash']}}</a> 
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Hoạt động
+                            Operations	
                         </td>
                         <td>
-                            5
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Transactions.failed
-                        </td>
-                        <td>
-                            0
+                            {{$data['2']['operation_count']}}
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            max.transaction
+                            Transactions Failed	
                         </td>
                         <td>
-                            1000 per block
+                            {{$data['2']['failed_transaction_count']}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Max Transactions	
+                        </td>
+                        <td>
+                            {{$data['2']['max_tx_set_size']}}
                         </td>
                     </tr>
                 </table>
@@ -68,42 +68,42 @@
            
                     <tr>
                         <td>
-                            base.fee
+                            Base Fee	
                         </td>
                         <td>
-                            0,01 Test-π
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            base.reserve
-                        </td>
-                        <td>
-                            10 Test-π
+                            {{$data['2']['base_fee_in_stroops']/10000000}} π
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            fee.pool
+                            Base Reserve
                         </td>
                         <td>
-                            219.273,322 Test-π
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            total.coins
-                        </td>
-                        <td>
-                            100.000.000.000 Test-π
+                            {{$data['2']['base_reserve_in_stroops']/10000000}} π
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Phiên bản Nghị định thư
+                            Fee Pool
                         </td>
                         <td>
-                            15
+                            {{($data['2']['fee_pool'])}} π
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Total Coins	
+                        </td>
+                        <td>
+                            {{number_format(($data['2']['total_coins']))}} π
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Protocol Version	
+                        </td>
+                        <td>
+                            {{($data['2']['protocol_version'])}} π
                         </td>
                     </tr>
                 </table>
@@ -113,7 +113,7 @@
 
     <div class="space">
         <div class="top">
-            <h3>Giao dịch (5)</h3>
+            <h3>Transactions  ({{$data['2']['operation_count']}})</h3>
         </div>
         <table>
             <tr>
@@ -121,34 +121,32 @@
                     #
                 </td>
                 <td>
-                    source.account
+                    Source
                 </td>
                 <td>
-                    Hoạt động
+                    Operations
                 </td>
                 <td>
-                    Thời gian
+                    Time
                 </td>
             </tr>
+            @foreach ($data['1'] as $d)
             <tr>
                 <td>
-                    <a href="">aaeec895fc4ebf30da8182f753a3bb55331fbd307446a1f062426a18b427e4fc</a>
+                    <a href="">{{$d['hash']}}</a>
                 </td>
                 <td class="name">
-                    <a href="">GD32</a>
+                    <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
                 </td>
                 <td>
-                    1
+                    {{$d['operation_count']}}
                 </td>
                 <td>
-                    13 giờ trước
+                    <a href=""> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
                 </td>
             </tr>
-            <tr>
-                <td class="name" colspan="4">
-                    <a href="">csv-export</a>
-                </td>
-            </tr>
+            @endforeach
+           
         </table>
     </div>
 </div>

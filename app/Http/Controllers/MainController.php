@@ -46,12 +46,24 @@ class MainController extends Controller
         $tran= $collection['_embedded']['records'];
         return view('load.load-transactions',compact('tran'));
     }
+    public function load_transactions_home(){
+        $getoperations = Http::get('https://api.testnet.minepi.com/transactions?limit=20&order=desc')->json();
+        $collection = collect($getoperations);
+        $tran= $collection['_embedded']['records'];
+        return view('load.load-transactions-home',compact('tran'));
+    }
 
     public function load_blocks(){
         $getoperations = Http::get('https://api.testnet.minepi.com/ledgers?limit=10&order=desc')->json();
         $collection = collect($getoperations);
         $block= $collection['_embedded']['records'];
         return view('load.load-blocks',compact('block'));
+    }
+    public function load_blocks_home(){
+        $getoperations = Http::get('https://api.testnet.minepi.com/ledgers?limit=10&order=desc')->json();
+        $collection = collect($getoperations);
+        $block= $collection['_embedded']['records'];
+        return view('load.load-blocks-home',compact('block'));
     }
 /////////////////////////////////////////////////////////////////
      public function get_payment(Request $request){
@@ -129,9 +141,17 @@ public function update_blocks(){
 public function hash_detail($id){
     $get_detail_2 = Http::get('https://api.testnet.minepi.com/transactions/'.$id.'/operations')->json();
     $get_detail = Http::get('https://api.testnet.minepi.com/transactions/'.$id)->json();
+    $data['1'] = collect($get_detail_2['_embedded']['records'])->first();
+    $data['2'] = collect($get_detail);
+   return view('component.detail-hash',compact('data'));
+}
+
+public function block_detail($id){
+    $get_detail_2 = Http::get('https://api.testnet.minepi.com/ledgers/'.$id.'/transactions')->json();
+    $get_detail = Http::get('https://api.testnet.minepi.com/ledgers/'.$id)->json();
     $data['1'] = collect($get_detail_2['_embedded']['records']);
     $data['2'] = collect($get_detail);
-    dd($data);
-   return view('component.detail-hash',compact('data'));
+    // dd($data['1']);
+   return view('component.detail-block',compact('data'));
 }
 }
