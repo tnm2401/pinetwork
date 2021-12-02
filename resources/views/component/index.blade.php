@@ -72,7 +72,7 @@
                 <a href="">   {{ \Illuminate\Support\Str::limit($t['id'], 8, $end='...') }} </a> 
                   </td>
                 
-                    <td><a href="">{{$t['ledger']}}</a></td>
+                    <td><a href="{{route('block_detail',$t['ledger'])}}">{{$t['ledger']}}</a></td>
                 
                   <td>
                     <a href=""> {{$t['operation_count']}}</a>
@@ -104,7 +104,7 @@
                @foreach ($block as $b)
             <tr>
                 <td class="id">
-                 <a href=""> {{$b['sequence']}}</a>  
+                 <a href="{{route('block_detail',$b['sequence'])}}"> {{$b['sequence']}}</a>  
                 </td>
               
                 <td>
@@ -125,8 +125,8 @@ var auto_refresh = setInterval(
 function ()
 {
    $('#latest-operations').load('{{route("load-operation")}}');
-   $('#latest-transactions').load('{{route("load-transaction")}}');
-   $('#latest-blocks').load('{{route("load-block")}}');
-}, 3000); // refresh every 10000 milliseconds
+   $('#latest-transactions').load('{{route("load-transactions-home")}}');
+   $('#latest-blocks').load('{{route("load-blocks-home")}}');
+}, 8000); // refresh every 10000 milliseconds
 </script>
 @endsection

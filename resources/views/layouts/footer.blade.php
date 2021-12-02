@@ -1,4 +1,6 @@
 
+</div>
+
 <div class="footer">
   <span>Shin &copy; 2021</span>
   <a href="">SrcCode</a>
