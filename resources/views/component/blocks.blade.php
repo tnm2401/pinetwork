@@ -4,7 +4,7 @@
 @endsection
 @section('main')
 <div class="main sFDR sJCSB sMgT10">
-    <div class="thanh-toan">
+    <div class="space">
         
         <div class="top">
             <h3>PAYMENTS</h3>

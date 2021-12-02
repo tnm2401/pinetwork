@@ -113,6 +113,9 @@ body{
    padding: 7px 15px;
    display: block;
 }
+.thanh-toan{
+    width: 100%;
+}
 .tool{
     display: flex;
     justify-content: space-between;
@@ -181,6 +184,11 @@ body{
 .main .top span{
     color: green;
     font-weight: bold;
+}
+.top button{
+    padding: 0 10px;
+    border: none;
+    outline: none;
 }
 .main table{
     width: 100%;
