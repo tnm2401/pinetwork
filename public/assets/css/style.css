@@ -11,34 +11,16 @@ body{
 }
 .header{
     background: linear-gradient(to right, #8c3590, #2c4982);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 0 0 0 20px;
-    box-shadow: 0 1px 3px grey;
     position: sticky;
     top: 0;
+    box-shadow: 0 1px 3px grey;
     z-index: 100;
 }
-.footer{
-    background: rgb(34, 34, 34);
+.hedaer-data{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-radius: 0 20px 0 0 ;
-    box-shadow: 0 1px 3px grey;
-    margin-top: 10px;
-    padding: 10px 20px;
-    color: white;
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-}
-.footer a{
-    color: white;
-    text-decoration: none;
 }
 .header ul{
     list-style: none;
@@ -48,7 +30,7 @@ body{
     align-items: center;
 }
 .header nav{
-    padding: 10px 20px;
+    padding: 10px 0;
 }
 .header nav img{
     width: 40px;
@@ -113,6 +95,23 @@ body{
    padding: 7px 15px;
    display: block;
 }
+
+.footer{
+    background: rgb(34, 34, 34);
+}
+.footer .footer-data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding: 10px 20px;
+    color: white;
+}
+.footer-data a{
+    color: white;
+    text-decoration: none;
+}
 .thanh-toan{
     width: 100%;
 }
@@ -127,6 +126,7 @@ body{
     color: white;
     padding: 10px 20px;
     box-shadow: 1px 1px 2px grey;
+    cursor: pointer;
 }
 .systemMenu i{
     width: 20px;
@@ -187,6 +187,7 @@ body{
 .main .top span{
     color: green;
     font-weight: bold;
+    cursor: pointer;
 }
 .top button{
     padding: 0 10px;
@@ -253,9 +254,6 @@ body{
     text-overflow: ellipsis;
     overflow: hidden;
 }
-.main table td.name{
-    text-align: center;
-}
 .main table td.name a{
     text-transform: uppercase;
     padding: 5px 10px;
@@ -269,11 +267,9 @@ body{
     text-decoration: none;
 }
 .pi-coin{
-    color: white;
-    padding: 0 10px;
-    background: green;
-    border-radius: 4px;
-    margin-left: 10px;
+    /* color: white; */
+    color: rgb(255, 51, 0);
+    font-weight: 900;
 }
 .row{
     display:flex;
@@ -284,6 +280,8 @@ body{
 .mini-tab{
     flex-basis: 49%;
 }
+
+
 @media screen and (max-width: 768px) {
     .tableResponsive table{
         width: 100vw;
