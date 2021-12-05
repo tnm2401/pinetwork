@@ -30,7 +30,7 @@
                     Time
                 </th>
             </tr>
-           
+            
             @foreach ($data as $d)
            
             <tr>

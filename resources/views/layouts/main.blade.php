@@ -1,9 +1,9 @@
 @extends('layouts.layouts')
 @section('main')
-<div class="container body">
+<div class="s-container body">
     <div class="pace-cover"></div>
-    <div id="st-container" class="st-container st-effect">
-      <div class="main_containers">
+    <div id="st-s-container" class="st-s-container st-effect">
+      <div class="main_s-containers">
 
         <!-- TOP SECONDARY NAVIGATION -->
         <div class="top_nav">

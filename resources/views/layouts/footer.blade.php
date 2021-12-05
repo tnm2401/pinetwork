@@ -2,7 +2,7 @@
 </div>
 
 <div class="footer">
-  <div class="container footer-data">
+  <div class="s-container footer-data">
      <span>Shin | 2021</span>
      <a href="">SrcCode</a>
   </div>
