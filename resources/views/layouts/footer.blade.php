@@ -1,8 +1,10 @@
 
 
-<div class="container footer">
-  <span>Shin | 2021</span>
-  <a href="">SrcCode</a>
+<div class="footer">
+  <div class="container footer-data">
+     <span>Shin | 2021</span>
+     <a href="">SrcCode</a>
+  </div>
 </div>
 
 <script src="https://kit.fontawesome.com/11928c85ee.js" crossorigin="anonymous"></script>
