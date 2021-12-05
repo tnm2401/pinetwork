@@ -13,7 +13,7 @@
            
             <tr>
                 <td>
-                    Khóa công khai:
+                    Public Key:
                 </td>
                 <td>
                     GCJ3QTQTAG6NEIJUBE3726YXGSHDX6OX4STLUNLZSWPPLS6A5PCBGACN
@@ -21,7 +21,7 @@
             </tr>
             <tr>
                 <td>
-                    Trang chủ miền:
+                    Home Domain:
                 </td>
                 <td>
                     
@@ -29,7 +29,7 @@
             </tr>
             <tr>
                 <td>
-                    subentry.count:
+                    Subentry Count:
                 </td>
                 <td>
                     0

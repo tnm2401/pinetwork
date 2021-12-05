@@ -16,7 +16,8 @@
                     Time
                 </td>
                 <td>
-                    {{ \Carbon\Carbon::parse($data['2']['created_at'])->toDateTimeString() }}
+        
+                    {{ \Carbon\Carbon::parse($data['2']['created_at'])->setTimezone($tz)->format('m-d-Y h:i:s A') }} <br>                   
                 </td>
             </tr>
             <tr>
@@ -32,7 +33,7 @@
                     Block
                 </td>
                 <td>
-                    {{$data['2']['ledger']}}
+                    <a href="{{route('block_detail',$data['2']['ledger'])}}">{{$data['2']['ledger']}}</a>
                 </td>
             </tr>
             <tr>

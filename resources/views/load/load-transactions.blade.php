@@ -21,7 +21,7 @@
 <tr>
   <td >
      
-      <a href="">{{ \Illuminate\Support\Str::limit($d['hash'], 8, $end='...') }}</a>
+      <a href="{{route('hash_detail',$d['hash'])}}">{{ \Illuminate\Support\Str::limit($d['hash'], 8, $end='...') }}</a>
   </td>
  
   <td class="name"> <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a></td>              

@@ -1,5 +1,4 @@
 
-</div>
 
 <div class="container footer">
   <span>Shin | 2021</span>

@@ -4,17 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Http;
+use View;
 use Carbon\Carbon;
 class MainController extends Controller
 {
-    // public function index(){
-    //     $getblock = Http::get('https://api.testnet.minepi.com/ledgers?limit=20&order=desc')->json();
-    //     $collection = collect($getblock);
-    //     $data= $collection['_embedded']['records'];
 
-
-    //     return view("layouts.main",compact('data'));
-    // }
 
     public function index(){
         $getoperations = Http::get('https://api.testnet.minepi.com/operations?limit=30&order=desc')->json();
@@ -153,5 +147,14 @@ public function block_detail($id){
     $data['2'] = collect($get_detail);
     // dd($data['1']);
    return view('component.detail-block',compact('data'));
+}
+
+public function account_detail($id){
+    $get_detail_2 = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/transactions')->json();
+    $get_detail = Http::get('https://api.testnet.minepi.com/accounts/'.$id)->json();
+    $data['1'] = collect($get_detail_2['_embedded']['records']);
+    $data['2'] = collect($get_detail);
+    // dd($data['1']);
+   return view('component.detail-account',compact('data'));
 }
 }
