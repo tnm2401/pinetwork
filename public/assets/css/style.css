@@ -108,6 +108,40 @@ body{
     padding: 10px 20px;
     color: white;
 }
+.ky-ket{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ky-ket .detail{
+    width: 780px;
+}
+.ky-ket .nguong{
+    width: 380px;
+}
+.s-nav-tab{
+    margin-top: 20px;
+    list-style: none;
+}
+.s-nav-tab li{
+    display: inline-block;
+    margin: 10px;
+}
+.s-nav-tab li a{
+    display: block;
+    padding: 10px 20px;
+    background: #613e8a;
+    text-decoration: none;
+    border-radius:  0 4px;
+    color: white;
+}
+@media screen and (max-width: 768px) {
+    .ky-ket .detail, .ky-ket .nguong{
+        width: 100%;
+    }
+}
+
 .footer-data a{
     color: white;
     text-decoration: none;
