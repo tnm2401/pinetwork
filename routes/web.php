@@ -37,4 +37,6 @@ Route::post('/blocks', [\App\Http\Controllers\MainController::class, 'get_blocks
 ///get detail info account , block, hash
 Route::get('/hash/{value}', [\App\Http\Controllers\MainController::class, 'hash_detail'])->name("hash_detail");
 Route::get('/block/{value}', [\App\Http\Controllers\MainController::class, 'block_detail'])->name("block_detail");
+Route::get('/account/{value}', [\App\Http\Controllers\MainController::class, 'account_detail'])->name("account_detail");
+
 

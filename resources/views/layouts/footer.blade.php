@@ -1,5 +1,4 @@
 
-</div>
 
 <div class="footer">
   <div class="s-container footer-data">

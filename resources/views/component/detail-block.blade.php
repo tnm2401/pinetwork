@@ -133,7 +133,7 @@
             @foreach ($data['1'] as $d)
             <tr>
                 <td>
-                    <a href="">{{$d['hash']}}</a>
+                    <a href="{{route('hash_detail',$d['hash'])}}">{{$d['hash']}}</a>
                 </td>
                 <td class="name">
                     <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
