@@ -7,7 +7,7 @@
     <div class="space">
         
         <div class="top">
-            <h3>PAYMENTS</h3>
+            <h3>TRANSACTION</h3>
             <form action="{{route('post_transactions')}}" method="POST">
             @csrf
             <button class="none" type="submit"> <span>PREVIOUS PAGE  <i class="fas fa-arrow-circle-right"></i></span></button>
@@ -44,10 +44,10 @@
                     <a href="">{{$d['ledger']}}</a>
                 </td>
                 <td>
-                    <a href="">{{$d['operation_count']}}</a>
+                    {{$d['operation_count']}}
                 </td>
                 <td>
-                    <a href=""> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
+                    {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}
                 </td>
                 
             </tr>

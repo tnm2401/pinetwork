@@ -12,8 +12,8 @@ $(window).on('load', function(event) {
 const $$ = document.querySelectorAll.bind(document)
 const tabs = $$('.tab-item')
 const panes = $$('.tab-pane')
-const tabActive = $(".tab-item.active")
-const line = $(".tabs .line")
+// const tabActive = $(".tab-item.active")
+// const line = $(".tabs .line")
 // line.css("left", tabActive.offsetLeft + "px")
 // line.css("width", tabActive.offsetWidth + "px")
 tabs.forEach((tab, index) => {
@@ -21,8 +21,8 @@ tabs.forEach((tab, index) => {
     tab.onclick = function(){
         $(".tab-item.active").removeClass("active")
         $(".tab-pane.active").removeClass("active")
-        line.css("left", this.offsetLeft + "px")
-        line.css("width", this.offsetWidth + "px")
+        // line.css("left", this.offsetLeft + "px")
+        // line.css("width", this.offsetWidth + "px")
         this.classList.add("active")
         pane.classList.add("active")
     }

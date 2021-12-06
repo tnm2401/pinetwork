@@ -7,7 +7,7 @@
     <div class="space">
         
         <div class="top">
-            <h3>PAYMENTS</h3>
+            <h3>BLOCK</h3>
             <form action="{{route('post_blocks')}}" method="POST">
             @csrf
             <button class="none" type="submit"> <span>PREVIOUS PAGE  <i class="fas fa-arrow-circle-right"></i></span></button>
@@ -35,7 +35,7 @@
                     <a href="">{{$d['successful_transaction_count']}}</a> successful  / {{$d['failed_transaction_count']}} failed
                 </td>
                 <td>
-                    <a href=""> {{ \Carbon\Carbon::parse($d['closed_at'])->diffForHumans() }}</a>
+                    {{ \Carbon\Carbon::parse($d['closed_at'])->diffForHumans() }}
                 </td>
                 
             </tr>
