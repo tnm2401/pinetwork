@@ -150,9 +150,9 @@
     var auto_refresh = setInterval(
     function ()
     {
-    $('#latest-operations').load('{{route("load-operation")}}');
-    $('#latest-transactions').load('{{route("load-transactions-home")}}');
-    $('#latest-blocks').load('{{route("load-blocks-home")}}');
+        $('#latest-operations').load('{{route("load-operation")}}');
+        $('#latest-transactions').load('{{route("load-transactions-home")}}');
+        $('#latest-blocks').load('{{route("load-blocks-home")}}');
     }, 8000); // refresh every 10000 milliseconds
 </script>
 @endsection
