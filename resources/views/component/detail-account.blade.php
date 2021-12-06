@@ -1,13 +1,13 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | User
+    Pi Blockexploer | Account {{$data['2']['id']}}
 @endsection
 @section('main')
 <div class="main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
-            <h3>Tài khoản</h3>
-            <span class="paginate">json</span>
+            <h3>Account</h3>
+            {{-- <span class="paginate">json</span> --}}
         </div>
         <table>
            
@@ -16,7 +16,7 @@
                     Public Key:
                 </td>
                 <td>
-                    GCJ3QTQTAG6NEIJUBE3726YXGSHDX6OX4STLUNLZSWPPLS6A5PCBGACN
+                    {{$data['2']['id']}}
                 </td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                     Subentry Count:
                 </td>
                 <td>
-                    0
+                    {{$data['2']['subentry_count']}}
                 </td>
             </tr>
         </table>
@@ -40,111 +40,121 @@
 
     <div class="space">
         <ul class="s-nav-tab">
-            <li class="active"><a data-toggle="tab" href="#so-du">Số dư</a></li>
-            <li><a data-toggle="tab" href="#thanh-toan">Thanh toán</a></li>
+            <li class="active"><a data-toggle="tab" href="#so-du">Balances</a></li>
+            <li><a data-toggle="tab" href="#thanh-toan">Payments</a></li>
             <li><a data-toggle="tab" href="#offers">Offers</a></li>
             <li><a data-toggle="tab" href="#trades">Trades</a></li>
-            <li><a data-toggle="tab" href="#hieu-ung">Hiệu ứng</a></li>
-            <li><a data-toggle="tab" href="#hoat-dong">Hoạt động</a></li>
-            <li><a data-toggle="tab" href="#giao-dich">Giao dịch</a></li>
-            <li><a data-toggle="tab" href="#ky-ket">Ký kết</a></li>
-            <li><a data-toggle="tab" href="#co">Cờ</a></li>
-            <li><a data-toggle="tab" href="#du-lieu">Dữ liệu</a></li>
+            <li><a data-toggle="tab" href="#hieu-ung">Effects</a></li>
+            <li><a data-toggle="tab" href="#hoat-dong">Operations</a></li>
+            <li><a data-toggle="tab" href="#giao-dich">Transactions</a></li>
+            <li><a data-toggle="tab" href="#ky-ket">Signing</a></li>
+            <li><a data-toggle="tab" href="#co">Flags</a></li>
+            <li><a data-toggle="tab" href="#du-lieu">Data</a></li>
           </ul>
 
           <div class="tab-content">
             <div id="so-du" class="tab-pane fade in active">
               <div class="top">
-                  <h3>Số dư</h3>
+                  <h3>Balances</h3>
               </div>
                 <table>
                     <tr>
                         <td>
-                            Tài sản
+                            Asset
                         </td>
                         <td>
-                            Cân đối
+                            Balance
                         </td>
                         <td>
-                            Giới hạn
+                            Limit
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Test-π
+                            π
                         </td>
                         <td>
-                            28.241
+                            {{floatval($data['2']['balances']['0']['balance'])}}
                         </td>
                         <td>
-                            26/11/2021 15:42
+                           
                         </td>
                     </tr>
                 </table>
             </div>
             <div id="thanh-toan" class="tab-pane fade">
                 <div class="top">
-                    <h3>Thanh toán</h3>
-                    <button>Trang sau</button>
+                    <h3>Payments</h3>
+                    <button>Next page</button>
                 </div>
               <table>
                 <tr>
                     <td>
-                        Tài khoản
+                        Account
                     </td>
                     <td>
-                        payments
+                        Payment
                     </td>
                     <td>
-                        Giao dịch
+                        Transaction
                     </td>
                     <td>
-                        Kiểu
+                        Type
                     </td>
                     <td>
-                        Thời gian
+                        Time
                     </td>
                 </tr>
-                <tr>
+                @foreach ($data['payments'] as $d)
+                    <tr>
                     <td class="name">
-                        GCOR
+                        <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
                     </td>
                     <td>
-                        Đã tạo Tài khoản GBJ5 với số dư <span class="pi-coin">100</span>
+                        @if($d['type_i'] != 0)
+                        Pay <span class="pi-coin">{{floatval($d['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a>
+                        @else
+                        Created Account <a href="">{{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance {{floatval($d['starting_balance'])}}
+                        @endif
                     </td>
                     <td class="id">
-                        5001E571C0369F24625BE5BA4AD321ADB941AE46FB655546D65CA931F4714EC7JSON    
+                       <a href="{{route('hash_detail',$d['transaction_hash'])}}"> {{$d['transaction_hash']}}   </a> 
                     </td>
                     <td>
-                        create_account
+                        {{ ($d['type_i']==1) ? 'Payment' : 'Create Account' }}
                     </td>
                     <td>
-                        1 phút trước
+                        <a href="#"> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
                     </td>
                 </tr>
+                @endforeach
+                
             </table>
             </div>
             <div id="offers" class="tab-pane fade">
                 <div class="top">
                     <h3>Offers</h3>
-                    <button>Trang sau</button>
+                    <button>Next Page</button>
                 </div>
               <table>
+                @if(!$data['offer'])
                 <tr>
                     <td>
-                        Bán
+                        Sell
                     </td>
                     <td>
-                        buy
+                        Buy
                     </td>
                     <td>
-                        Số tiền
+                        Amount
                     </td>
                     <td>
-                        Giá bán
+                        Price
                     </td>
                 </tr>
-                <tr>
+               
+                @foreach ($data['offer'] as $d)
+                     <tr>
                     <td>
                         GCOR[<a>OPDA</a>]
                     </td>
@@ -158,6 +168,14 @@
                         0.0010000
                     </td>
                 </tr>
+                @endforeach
+                @else
+                <tr>
+                       <td>
+                        No offers
+                       </td>
+                </tr>
+                @endif
             </table>
             </div>
             <div id="trades" class="tab-pane fade">
