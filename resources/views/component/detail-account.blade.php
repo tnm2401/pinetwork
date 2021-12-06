@@ -179,31 +179,29 @@
             </table>
             </div>
             <div id="trades" class="tab-pane fade">
-              <h3>Trades</h3>
-              <p>No trade</p>
+              <h3>TRADES</h3>
+              <p>No trades</p>
             </div>
             <div id="hieu-ung" class="tab-pane fade">
                 <div class="top">
-                    <h3>Hiệu ứng</h3>
-                    <button>Trang sau</button>
+                    <h3>EFFECTS</h3>
+                    <button>Next Page</button>
                 </div>
               <table>
                 <tr>
                     <td>
-                        Kiểu
+                        Type
                     </td>
                     <td>
-                        detail
+                        Details
                     </td>
                     <td>
-                        Giao dịch
+                        Transaction
                     </td>
                     <td>
-                        Thời gian
+                        Time
                     </td>
-                    <td>
-                        
-                    </td>
+                  
                 </tr>
                 <tr>
                     <td>
@@ -218,19 +216,17 @@
                     <td>
                         1 phút trước
                     </td>
-                    <td>
-                        <a href="">JSON</a>
-                    </td>
+                   
                 </tr>
             </table>
             </div>
             <div id="hoat-dong" class="tab-pane fade">
                 <div class="top">
-                    <h3>Hoạt động</h3>
-                    <button>Trang sau</button>
+                    <h3>OPERATIONS</h3>
+                    <button>Next Page</button>
                 </div>
                 <form action="">
-                    filter.for-operation-type
+                    Filter for Operation Type:
                     <select name="" id="">
                         <option value="1">Xin lỗi tình yêu</option>
                     </select>
@@ -238,19 +234,19 @@
                 <table>
                     <tr>
                         <td>
-                            Tài khoản
+                           Account
                         </td>
                         <td>
-                            Hoạt động
+                            Operation
                         </td>
                         <td>
-                            Giao dịch
+                            Transaction
                         </td>
                         <td>
-                            Kiểu
+                            Type
                         </td>
                         <td>
-                            Thời gian
+                            Time
                         </td>
                     </tr>
                     <tr>
@@ -274,7 +270,7 @@
             </div>
             <div id="giao-dich" class="tab-pane fade">
                 <div class="top">
-                    <h3>Giao dịch</h3>
+                    <h3>TRANSACTIONS</h3>
                     <button>Trang sau</button>
                 </div>
                 <table>
@@ -283,13 +279,13 @@
                             #
                         </td>
                         <td>
-                            Ledger
+                            Block
                         </td>
                         <td>
-                            Hoạt động
+                            Operations
                         </td>
                         <td>
-                            Thời gian
+                            Time
                         </td>
                     </tr>
                     <tr>
@@ -309,19 +305,19 @@
                 </table>
             </div>
             <div id="ky-ket" class="tab-pane fade">
-              <h3>Ký kết</h3>
+              <h3>SIGNING</h3>
                 <div class="ky-ket">
                     <div class="detail">
                         <table>
                             <tr>
                                 <td>
-                                    Chìa khóa
+                                    Key
                                 </td>
                                 <td>
-                                    Cân nặng
+                                    Weight
                                 </td>
                                 <td>
-                                    Kiểu
+                                    Type
                                 </td>
                             </tr>
                             <tr>
@@ -338,12 +334,12 @@
                         </table>
                     </div>
                     <div class="nguong">
-                        <h4>Ngưỡng</h4>
+                        <h4>Thresholds</h4>
                         <table>
                             <tr>
-                                <td>Thấp</td>
-                                <td>Trung bình</td>
-                                <td>Cao</td>
+                                <td>Low</td>
+                                <td>Medium</td>
+                                <td>High</td>
                             </tr>
                             <tr>
                                 <td>0</td>
@@ -355,14 +351,14 @@
                 </div>
             </div>
             <div id="co" class="tab-pane fade">
-              <h3>Cờ</h3>
+              <h3>FLAGS</h3>
                 <table>
-                    <tr><td>Tên</td><td>Giá trị</td></tr>
+                    <tr><td>Name</td><td>Value</td></tr>
                     <tr><td>auth_required</td><td>false</td></tr>
                 </table>
             </div>
             <div id="du-lieu" class="tab-pane fade">
-              <h3>Dữ liệu</h3>
+              <h3>DATA</h3>
                 <p>No data</p>
             </div>
           </div>

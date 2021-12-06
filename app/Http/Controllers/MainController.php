@@ -154,10 +154,13 @@ public function account_detail($id){
     $get_detail_payment = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/payments?limit=10&order=desc')->json();
     $get_detail = Http::get('https://api.testnet.minepi.com/accounts/'.$id)->json();
     $get_offer = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/offers?limit=10&order=desc')->json();
+    $get_trade = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/trades?limit=10&order=desc')->json();
     $data['1'] = collect($get_detail_2['_embedded']['records']);
     $data['payments'] = collect($get_detail_payment['_embedded']['records']);
     $data['2'] = collect($get_detail);
     $data['offer']=collect($get_offer['_embedded']['records']);
+    $data['trade']=collect($get_trade['_embedded']['records']);
+
     // dd($data['offer']);
    return view('component.detail-account',compact('data'));
 }
