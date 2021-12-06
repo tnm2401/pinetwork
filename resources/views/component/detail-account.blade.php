@@ -3,7 +3,7 @@
     Pi Blockexploer | User
 @endsection
 @section('main')
-<div class="main sFDR sJCSB sMgT10">
+<div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
             <h3>Tài khoản</h3>
@@ -39,21 +39,23 @@
     </div>
 
     <div class="space">
-        <ul class="s-nav-tab">
-            <li class="active"><a data-toggle="tab" href="#so-du">Số dư</a></li>
-            <li><a data-toggle="tab" href="#thanh-toan">Thanh toán</a></li>
-            <li><a data-toggle="tab" href="#offers">Offers</a></li>
-            <li><a data-toggle="tab" href="#trades">Trades</a></li>
-            <li><a data-toggle="tab" href="#hieu-ung">Hiệu ứng</a></li>
-            <li><a data-toggle="tab" href="#hoat-dong">Hoạt động</a></li>
-            <li><a data-toggle="tab" href="#giao-dich">Giao dịch</a></li>
-            <li><a data-toggle="tab" href="#ky-ket">Ký kết</a></li>
-            <li><a data-toggle="tab" href="#co">Cờ</a></li>
-            <li><a data-toggle="tab" href="#du-lieu">Dữ liệu</a></li>
-          </ul>
+        
+        <div class="tabs">
+            <div class="tab-item active">Số dư</a></div>
+            <div class="tab-item"> Thanh toán</a></div>
+            <div class="tab-item"> Offers</a></div>
+            <div class="tab-item"> Trades</a></div>
+            <div class="tab-item"> Hiệu ứng</a></div>
+            <div class="tab-item"> Hoạt động</a></div>
+            <div class="tab-item"> Giao dịch</a></div>
+            <div class="tab-item"> Ký kết</a></div>
+            <div class="tab-item"> Cờ</a></div>
+            <div class="tab-item"> Dữ liệu</a></div>
+            <div class="line"></div>
+          </div>
 
           <div class="tab-content">
-            <div id="so-du" class="tab-pane fade in active">
+            <div class="tab-pane active">
               <div class="top">
                   <h3>Số dư</h3>
               </div>
@@ -82,49 +84,49 @@
                     </tr>
                 </table>
             </div>
-            <div id="thanh-toan" class="tab-pane fade">
+            <div class="tab-pane">
                 <div class="top">
                     <h3>Thanh toán</h3>
                     <button>Trang sau</button>
                 </div>
-              <table>
-                <tr>
-                    <td>
-                        Tài khoản
-                    </td>
-                    <td>
-                        payments
-                    </td>
-                    <td>
-                        Giao dịch
-                    </td>
-                    <td>
-                        Kiểu
-                    </td>
-                    <td>
-                        Thời gian
-                    </td>
-                </tr>
-                <tr>
-                    <td class="name">
-                        GCOR
-                    </td>
-                    <td>
-                        Đã tạo Tài khoản GBJ5 với số dư <span class="pi-coin">100</span>
-                    </td>
-                    <td class="id">
-                        5001E571C0369F24625BE5BA4AD321ADB941AE46FB655546D65CA931F4714EC7JSON    
-                    </td>
-                    <td>
-                        create_account
-                    </td>
-                    <td>
-                        1 phút trước
-                    </td>
-                </tr>
-            </table>
+                <table>
+                    <tr>
+                        <td>
+                            Tài khoản
+                        </td>
+                        <td>
+                            payments
+                        </td>
+                        <td>
+                            Giao dịch
+                        </td>
+                        <td>
+                            Kiểu
+                        </td>
+                        <td>
+                            Thời gian
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="name">
+                            GCOR
+                        </td>
+                        <td>
+                            Đã tạo Tài khoản GBJ5 với số dư <span class="pi-coin">100</span>
+                        </td>
+                        <td class="id">
+                            5001E571C0369F24625BE5BA4AD321ADB941AE46FB655546D65CA931F4714EC7JSON    
+                        </td>
+                        <td>
+                            create_account
+                        </td>
+                        <td>
+                            1 phút trước
+                        </td>
+                    </tr>
+                </table>
             </div>
-            <div id="offers" class="tab-pane fade">
+            <div class="tab-pane">
                 <div class="top">
                     <h3>Offers</h3>
                     <button>Trang sau</button>
@@ -160,7 +162,7 @@
                 </tr>
             </table>
             </div>
-            <div id="trades" class="tab-pane fade">
+            <div id="trades" class="tab-pane">
               <h3>Trades</h3>
               <p>No trade</p>
             </div>
@@ -206,7 +208,7 @@
                 </tr>
             </table>
             </div>
-            <div id="hoat-dong" class="tab-pane fade">
+            <div id="hoat-dong" class="tab-pane">
                 <div class="top">
                     <h3>Hoạt động</h3>
                     <button>Trang sau</button>
@@ -254,7 +256,7 @@
                     </tr>
                 </table>    
             </div>
-            <div id="giao-dich" class="tab-pane fade">
+            <div id="giao-dich" class="tab-pane">
                 <div class="top">
                     <h3>Giao dịch</h3>
                     <button>Trang sau</button>
@@ -290,7 +292,7 @@
                     </tr>
                 </table>
             </div>
-            <div id="ky-ket" class="tab-pane fade">
+            <div id="ky-ket" class="tab-pane">
               <h3>Ký kết</h3>
                 <div class="ky-ket">
                     <div class="detail">
@@ -336,14 +338,14 @@
                     </div>
                 </div>
             </div>
-            <div id="co" class="tab-pane fade">
+            <div id="co" class="tab-pane">
               <h3>Cờ</h3>
                 <table>
                     <tr><td>Tên</td><td>Giá trị</td></tr>
                     <tr><td>auth_required</td><td>false</td></tr>
                 </table>
             </div>
-            <div id="du-lieu" class="tab-pane fade">
+            <div id="du-lieu" class="tab-pane">
               <h3>Dữ liệu</h3>
                 <p>No data</p>
             </div>

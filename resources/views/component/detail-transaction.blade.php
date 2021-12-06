@@ -3,7 +3,7 @@
     Pi Blockexploer | Transaction Detail
 @endsection
 @section('main')
-<div class="main sFDR sJCSB sMgT10">
+<div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
             <h3>Giao dịch <span>1C487BBF7EB8E0776C517FC862E69CE38B3C0181AA4916F7354A99F22A3F8673</span></h3>
