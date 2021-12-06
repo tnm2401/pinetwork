@@ -141,7 +141,7 @@ public function hash_detail($id){
 }
 
 public function block_detail($id){
-    $get_detail_2 = Http::get('https://api.testnet.minepi.com/ledgers/'.$id.'/transactions')->json();
+    $get_detail_2 = Http::get('https://api.testnet.minepi.com/ledgers/'.$id.'/transactions?order=desc')->json();
     $get_detail = Http::get('https://api.testnet.minepi.com/ledgers/'.$id)->json();
     $data['1'] = collect($get_detail_2['_embedded']['records']);
     $data['2'] = collect($get_detail);
@@ -151,10 +151,14 @@ public function block_detail($id){
 
 public function account_detail($id){
     $get_detail_2 = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/transactions')->json();
+    $get_detail_payment = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/payments?limit=10&order=desc')->json();
     $get_detail = Http::get('https://api.testnet.minepi.com/accounts/'.$id)->json();
+    $get_offer = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/offers?limit=10&order=desc')->json();
     $data['1'] = collect($get_detail_2['_embedded']['records']);
+    $data['payments'] = collect($get_detail_payment['_embedded']['records']);
     $data['2'] = collect($get_detail);
-    // dd($data['1']);
+    $data['offer']=collect($get_offer['_embedded']['records']);
+    // dd($data['offer']);
    return view('component.detail-account',compact('data'));
 }
 }

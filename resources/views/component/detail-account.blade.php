@@ -1,13 +1,13 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | User
+    Pi Blockexploer | Account {{$data['2']['id']}}
 @endsection
 @section('main')
 <div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
-            <h3>Tài khoản</h3>
-            <span class="paginate">json</span>
+            <h3>Account</h3>
+            {{-- <span class="paginate">json</span> --}}
         </div>
         <table>
            
@@ -16,7 +16,7 @@
                     Public Key:
                 </td>
                 <td>
-                    GCJ3QTQTAG6NEIJUBE3726YXGSHDX6OX4STLUNLZSWPPLS6A5PCBGACN
+                    {{$data['2']['id']}}
                 </td>
             </tr>
             <tr>
@@ -32,7 +32,7 @@
                     Subentry Count:
                 </td>
                 <td>
-                    0
+                    {{$data['2']['subentry_count']}}
                 </td>
             </tr>
         </table>
@@ -57,96 +57,106 @@
           <div class="tab-content">
             <div class="tab-pane active">
               <div class="top">
-                  <h3>Số dư</h3>
+                  <h3>Balances</h3>
               </div>
                 <table>
                     <tr>
                         <td>
-                            Tài sản
+                            Asset
                         </td>
                         <td>
-                            Cân đối
+                            Balance
                         </td>
                         <td>
-                            Giới hạn
+                            Limit
                         </td>
                     </tr>
                     <tr>
                         <td>
-                            Test-π
+                            π
                         </td>
                         <td>
-                            28.241
+                            {{floatval($data['2']['balances']['0']['balance'])}}
                         </td>
                         <td>
-                            26/11/2021 15:42
+                           
                         </td>
                     </tr>
                 </table>
             </div>
             <div class="tab-pane">
                 <div class="top">
-                    <h3>Thanh toán</h3>
-                    <button>Trang sau</button>
-                </div>
-                <table>
-                    <tr>
-                        <td>
-                            Tài khoản
-                        </td>
-                        <td>
-                            payments
-                        </td>
-                        <td>
-                            Giao dịch
-                        </td>
-                        <td>
-                            Kiểu
-                        </td>
-                        <td>
-                            Thời gian
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="name">
-                            GCOR
-                        </td>
-                        <td>
-                            Đã tạo Tài khoản GBJ5 với số dư <span class="pi-coin">100</span>
-                        </td>
-                        <td class="id">
-                            5001E571C0369F24625BE5BA4AD321ADB941AE46FB655546D65CA931F4714EC7JSON    
-                        </td>
-                        <td>
-                            create_account
-                        </td>
-                        <td>
-                            1 phút trước
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="tab-pane">
-                <div class="top">
-                    <h3>Offers</h3>
-                    <button>Trang sau</button>
+                    <h3>Payments</h3>
+                    <button>Next page</button>
                 </div>
               <table>
                 <tr>
                     <td>
-                        Bán
+                        Account
                     </td>
                     <td>
-                        buy
+                        Payment
                     </td>
                     <td>
-                        Số tiền
+                        Transaction
                     </td>
                     <td>
-                        Giá bán
+                        Type
+                    </td>
+                    <td>
+                        Time
                     </td>
                 </tr>
+                @foreach ($data['payments'] as $d)
+                    <tr>
+                    <td class="name">
+                        <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
+                    </td>
+                    <td>
+                        @if($d['type_i'] != 0)
+                        Pay <span class="pi-coin">{{floatval($d['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a>
+                        @else
+                        Created Account <a href="">{{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance {{floatval($d['starting_balance'])}}
+                        @endif
+                    </td>
+                    <td class="id">
+                       <a href="{{route('hash_detail',$d['transaction_hash'])}}"> {{$d['transaction_hash']}}   </a> 
+                    </td>
+                    <td>
+                        {{ ($d['type_i']==1) ? 'Payment' : 'Create Account' }}
+                    </td>
+                    <td>
+                        <a href="#"> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
+                    </td>
+                </tr>
+                @endforeach
+                
+            </table>
+            </div>
+            <div class="tab-pane">
+                <div class="top">
+                    <h3>Offers</h3>
+                    <button>Next Page</button>
+                </div>
+              <table>
+                @if(!$data['offer'])
                 <tr>
+                    <td>
+                        Sell
+                    </td>
+                    <td>
+                        Buy
+                    </td>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        Price
+                    </td>
+                </tr>
+               
+                @foreach ($data['offer'] as $d)
+                     <tr>
                     <td>
                         GCOR[<a>OPDA</a>]
                     </td>
@@ -160,6 +170,14 @@
                         0.0010000
                     </td>
                 </tr>
+                @endforeach
+                @else
+                <tr>
+                       <td>
+                        No offers
+                       </td>
+                </tr>
+                @endif
             </table>
             </div>
             <div id="trades" class="tab-pane">
