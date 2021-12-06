@@ -3,7 +3,7 @@
     Pi Blockexploer | Payments
 @endsection
 @section('main')
-<div class="main sFDR sJCSB sMgT10">
+<div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         
         <div class="top">

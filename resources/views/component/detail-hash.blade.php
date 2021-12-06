@@ -4,7 +4,7 @@
 @endsection
 @section('main')
 
-<div class="main sFDR sJCSB sMgT10">
+<div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
             <h3>TRANSACTION <span>{{$data['2']['hash']}}</span></h3>

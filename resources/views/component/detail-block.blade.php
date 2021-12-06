@@ -3,7 +3,7 @@
     Pi Blockexploer | Ledger {{$data['2']['sequence']}}
 @endsection
 @section('main')
-<div class="main sFDR sJCSB sMgT10">
+<div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
             <h3>BLOCK <span>{{$data['2']['sequence']}}</span></h3>

@@ -4,7 +4,7 @@
 @endsection
 @section('main')
 
-  <div class="main sFDR sJCSB sMgT10">
+  <div class="s-container main sFDR sJCSB sMgT10">
       <div class="left">
           <div class="top">
               <h3>LATEST OPERATIONS</h3>
@@ -42,11 +42,10 @@
                   </td>
               </tr>
               @endforeach
-            
           </table>
       
       </div>
-      <div class="right">
+      <div class="right s-fdc-jcsb">
           <div class="top">
               <h3>LATEST TRANSACTIONS</h3>
               <span>VIEW ALL</span>
@@ -71,9 +70,7 @@
                   <td class="id">
                 <a href="{{route('hash_detail',$d['id'])}}">   {{ \Illuminate\Support\Str::limit($t['id'], 8, $end='...') }} </a> 
                   </td>
-                
                     <td><a href="{{route('block_detail',$t['ledger'])}}">{{$t['ledger']}}</a></td>
-                
                   <td>
                     <a href=""> {{$t['operation_count']}}</a>
                   </td>
@@ -85,9 +82,38 @@
           </table>
 
 
-          <div class="top">
-            <h3>LATEST BLOCKS</h3>
-            <span>VIEW ALL</span>
+        <div class="latest-block">
+            <div class="top">
+                <h3>LATEST BLOCKS</h3>
+                <span>VIEW ALL</span>
+            </div>
+            <table id="latest-blocks">
+                <tr>
+                    <th>
+                        #
+                    </th>
+                    <th>
+                        Transactions
+                    </th>
+                    <th>
+                        Time
+                    </th>
+                </tr>
+                   @foreach ($block as $b)
+                <tr>
+                    <td class="id">
+                     <a href="{{route('block_detail',$b['sequence'])}}"> {{$b['sequence']}}</a>
+                    </td>
+            
+                    <td>
+            
+                       <a href="">{{$b['successful_transaction_count']}}</a> / {{$b['failed_transaction_count']}}
+                      </td>
+            
+                      <td><a href="">{{ \Carbon\Carbon::parse($b['closed_at'])->diffForHumans() }}</a></td>
+                </tr>
+                @endforeach
+            </table>
         </div>
         <table id="latest-blocks">
             <tr>
@@ -121,12 +147,12 @@
   </div>
 </div>
 <script type="text/javascript">
-var auto_refresh = setInterval(
-function ()
-{
-   $('#latest-operations').load('{{route("load-operation")}}');
-   $('#latest-transactions').load('{{route("load-transactions-home")}}');
-   $('#latest-blocks').load('{{route("load-blocks-home")}}');
-}, 8000); // refresh every 10000 milliseconds
+    var auto_refresh = setInterval(
+    function ()
+    {
+    $('#latest-operations').load('{{route("load-operation")}}');
+    $('#latest-transactions').load('{{route("load-transactions-home")}}');
+    $('#latest-blocks').load('{{route("load-blocks-home")}}');
+    }, 8000); // refresh every 10000 milliseconds
 </script>
 @endsection
