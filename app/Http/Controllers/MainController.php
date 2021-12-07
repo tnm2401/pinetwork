@@ -19,7 +19,7 @@ class MainController extends Controller
         $collectiontran = collect($getreansactions);
         $tran= $collectiontran['_embedded']['records'];
 
-        $getblock = Http::get('https://api.testnet.minepi.com/ledgers?limit=10&order=desc')->json();
+        $getblock = Http::get('https://api.testnet.minepi.com/ledgers?limit=9&order=desc')->json();
         $collection = collect($getblock);
         $block= $collection['_embedded']['records'];
 
@@ -54,7 +54,7 @@ class MainController extends Controller
         return view('load.load-blocks',compact('block'));
     }
     public function load_blocks_home(){
-        $getoperations = Http::get('https://api.testnet.minepi.com/ledgers?limit=10&order=desc')->json();
+        $getoperations = Http::get('https://api.testnet.minepi.com/ledgers?limit=9&order=desc')->json();
         $collection = collect($getoperations);
         $block= $collection['_embedded']['records'];
         return view('load.load-blocks-home',compact('block'));
