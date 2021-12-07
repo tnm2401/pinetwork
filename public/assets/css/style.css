@@ -370,7 +370,7 @@ body{
         width: 100vw;
     }
     .tableResponsive table tr{
-        width: 100;
+        width: 100%;
     }
     .tableResponsive table th{
         display: none;
@@ -406,6 +406,9 @@ body{
     .mini-tab{
         flex-basis: 100%;
         margin-bottom: 10px;
+    }
+    .latest-transaction, .latest-block{
+        width: 100%;
     }
 }
 
