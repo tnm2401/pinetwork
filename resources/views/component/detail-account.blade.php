@@ -41,23 +41,23 @@
     <div class="space">
         
         <div class="tabs">
-            <div class="tab-item active">Số dư</a></div>
-            <div class="tab-item"> Thanh toán</a></div>
+            <div class="tab-item active">Balances</a></div>
+            <div class="tab-item"> Payments</a></div>
             <div class="tab-item"> Offers</a></div>
             <div class="tab-item"> Trades</a></div>
-            <div class="tab-item"> Hiệu ứng</a></div>
-            <div class="tab-item"> Hoạt động</a></div>
-            <div class="tab-item"> Giao dịch</a></div>
-            <div class="tab-item"> Ký kết</a></div>
-            <div class="tab-item"> Cờ</a></div>
-            <div class="tab-item"> Dữ liệu</a></div>
+            <div class="tab-item"> Effects</a></div>
+            <div class="tab-item"> Operations</a></div>
+            <div class="tab-item"> Transactions</a></div>
+            <div class="tab-item"> Signing</a></div>
+            <div class="tab-item"> Flags</a></div>
+            <div class="tab-item"> Data</a></div>
             <div class="line"></div>
           </div>
 
           <div class="tab-content">
             <div class="tab-pane active">
               <div class="top">
-                  <h3>Balances</h3>
+                  <h3>BALANCES</h3>
               </div>
                 <table>
                     <tr>
@@ -86,7 +86,7 @@
             </div>
             <div class="tab-pane">
                 <div class="top">
-                    <h3>Payments</h3>
+                    <h3>PAYMENTS</h3>
                     <button>Next page</button>
                 </div>
               <table>
@@ -126,7 +126,7 @@
                         {{ ($d['type_i']==1) ? 'Payment' : 'Create Account' }}
                     </td>
                     <td>
-                        <a href="#"> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
+                        {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}
                     </td>
                 </tr>
                 @endforeach
@@ -135,7 +135,7 @@
             </div>
             <div class="tab-pane">
                 <div class="top">
-                    <h3>Offers</h3>
+                    <h3>OFFERS</h3>
                     <button>Next Page</button>
                 </div>
               <table>
@@ -273,7 +273,7 @@
             <div id="giao-dich" class="tab-pane">
                 <div class="top">
                     <h3>TRANSACTIONS</h3>
-                    <button>Trang sau</button>
+                <button>Tang sau</button>
                 </div>
                 <table>
                     <tr>
@@ -307,7 +307,9 @@
                 </table>
             </div>
             <div id="ky-ket" class="tab-pane">
-              <h3>Ký kết</h3>
+                <div class="top">
+                    <h3>SIGNING</h3>
+                </div>
                 <div class="ky-ket">
                     <div class="detail">
                         <table>
@@ -353,14 +355,18 @@
                 </div>
             </div>
             <div id="co" class="tab-pane">
-              <h3>Cờ</h3>
+                <div class="top">
+                    <h3>FLAGS</h3>
+                </div>
                 <table>
                     <tr><td>Name</td><td>Value</td></tr>
                     <tr><td>auth_required</td><td>false</td></tr>
                 </table>
             </div>
             <div id="du-lieu" class="tab-pane">
-              <h3>Dữ liệu</h3>
+                <div class="top">
+                    <h3>DATA</h3>
+                </div>
                 <p>No data</p>
             </div>
           </div>

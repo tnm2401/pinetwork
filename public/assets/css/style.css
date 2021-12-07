@@ -139,8 +139,10 @@ body{
     display: flex;
     margin-bottom: 10px;
     position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
-.tabs .line{
+/* .tabs .line{
     position: absolute;
     left: 0;
     bottom: 0;
@@ -149,7 +151,7 @@ body{
     background:lime;
     transition: linear 0.3s;
     border-radius: 10px;
-}
+} */
 .tab-item{
     padding: 10px;
     color: green;
@@ -161,9 +163,19 @@ body{
 }
 .tab-item.active{
     color: lime;
+    transition: .7s linear;
+    font-weight: 700;
 }
 .tab-pane{
     display: none;
+}
+.tab-pane select, .tab-pane option, .tab-pane .top button{
+    color: lime;
+    font-family: var(--mainFont);
+    background: black;
+    border: none;
+    text-transform: uppercase;
+    outline: none;
 }
 .tab-pane.active{
     display: block;
@@ -347,14 +359,18 @@ body{
 .mini-tab{
     flex-basis: 49%;
 }
-
-
+.latest-operation{
+    width: 100%;
+}
+.latest-transaction, .latest-block{
+    width: 580px;
+}
 @media screen and (max-width: 768px) {
     .tableResponsive table{
         width: 100vw;
     }
     .tableResponsive table tr{
-        width: 100;
+        width: 100%;
     }
     .tableResponsive table th{
         display: none;
@@ -390,6 +406,9 @@ body{
     .mini-tab{
         flex-basis: 100%;
         margin-bottom: 10px;
+    }
+    .latest-transaction, .latest-block{
+        width: 100%;
     }
 }
 

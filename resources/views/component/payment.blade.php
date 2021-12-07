@@ -47,10 +47,10 @@
                  <a href="">{{$d['transaction_hash']}}</a>   
                 </td>
                 <td>
-                  <a href="">{{ ($d['type']=='payment') ? 'Payment' : 'Create Account' }}</a>  
+                  {{ ($d['type']=='payment') ? 'Payment' : 'Create Account' }}
                 </td>
                 <td>
-                    <a href=""> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
+                   {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}
                 </td>
                 
             </tr>
