@@ -273,7 +273,7 @@
             <div id="giao-dich" class="tab-pane">
                 <div class="top">
                     <h3>TRANSACTIONS</h3>
-                <button>Tang sau</button>
+                <button>Next page</button>
                 </div>
                 <table>
                     <tr>
