@@ -160,6 +160,7 @@ body{
 }
 .tab-item:hover{
     color: lime;
+    cursor: pointer;
 }
 .tab-item.active{
     color: lime;
@@ -394,7 +395,6 @@ body{
         text-align: right;
         max-width: 100%;
         overflow: hidden;
-
     }
     .tableResponsive table td.id span{
         max-width: 40%;
@@ -409,6 +409,17 @@ body{
     }
     .latest-transaction, .latest-block{
         width: 100%;
+    }
+    .idRp{
+        max-width: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    table.account-detail td.detail-title{
+        width: 40%;
+    }
+    table.account-detail td.detail-content{
+        width: 60%;
     }
 }
 

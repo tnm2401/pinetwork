@@ -9,29 +9,28 @@
             <h3>Account</h3>
             {{-- <span class="paginate">json</span> --}}
         </div>
-        <table>
-           
+        <table class="account-detail">
             <tr>
-                <td>
+                <td  class="detail-title">
                     Public Key:
                 </td>
-                <td>
+                <td class="idRp detail-content">
                     {{$data['2']['id']}}
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="detail-title">
                     Home Domain:
                 </td>
-                <td>
+                <td class="detail-content">
                     
                 </td>
             </tr>
             <tr>
-                <td>
+                <td class="detail-title">
                     Subentry Count:
                 </td>
-                <td>
+                <td class="detail-content">
                     {{$data['2']['subentry_count']}}
                 </td>
             </tr>
@@ -39,7 +38,6 @@
     </div>
 
     <div class="space">
-        
         <div class="tabs">
             <div class="tab-item active">Balances</a></div>
             <div class="tab-item"> Payments</a></div>
@@ -291,7 +289,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>
+                        <td class="idRp">
                             ac0293ee321c6bd8a0da7f03f24b75a3a06e6aefdd5de882b33e51c1a0a41c8c
                         </td>
                         <td>
