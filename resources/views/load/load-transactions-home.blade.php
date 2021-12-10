@@ -15,7 +15,7 @@
 @foreach ($tran as $t)
 <tr>
   <td class="id">
-<a href="{{route('hash_detail',$d['id'])}}">   {{ \Illuminate\Support\Str::limit($t['id'], 8, $end='...') }} </a> 
+<a href="{{route('hash_detail',$t['id'])}}">   {{ \Illuminate\Support\Str::limit($t['id'], 8, $end='...') }} </a> 
   </td>
     <td><a href="{{route('block_detail',$t['ledger'])}}">{{$t['ledger']}}</a></td>
   <td>
