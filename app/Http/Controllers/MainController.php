@@ -5,21 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Http;
 use View;
+use Redirect;
 use Carbon\Carbon;
 class MainController extends Controller
 {
 
 
     public function index(){
-        $getoperations = Http::get('https://api.testnet.minepi.com/operations?limit=30&order=desc')->json();
+        $getoperations = Http::get('https://api.testnet.minepi.com/operations?limit=20&order=desc')->json();
         $collection = collect($getoperations);
         $data= $collection['_embedded']['records'];
 
-        $getreansactions = Http::get('https://api.testnet.minepi.com/transactions?limit=20&order=desc')->json();
+        $getreansactions = Http::get('https://api.testnet.minepi.com/transactions?limit=10&order=desc')->json();
         $collectiontran = collect($getreansactions);
         $tran= $collectiontran['_embedded']['records'];
 
-        $getblock = Http::get('https://api.testnet.minepi.com/ledgers?limit=9&order=desc')->json();
+        $getblock = Http::get('https://api.testnet.minepi.com/ledgers?limit=10&order=desc')->json();
         $collection = collect($getblock);
         $block= $collection['_embedded']['records'];
 
@@ -28,7 +29,7 @@ class MainController extends Controller
     }
 
     public function load_operations(){
-        $getoperations = Http::get('https://api.testnet.minepi.com/operations?limit=30&order=desc')->json();
+        $getoperations = Http::get('https://api.testnet.minepi.com/operations?limit=20&order=desc')->json();
         $collection = collect($getoperations);
         $data= $collection['_embedded']['records'];
         return view('load.load-operations',compact('data'));
@@ -41,7 +42,7 @@ class MainController extends Controller
         return view('load.load-transactions',compact('tran'));
     }
     public function load_transactions_home(){
-        $getoperations = Http::get('https://api.testnet.minepi.com/transactions?limit=20&order=desc')->json();
+        $getoperations = Http::get('https://api.testnet.minepi.com/transactions?limit=10&order=desc')->json();
         $collection = collect($getoperations);
         $tran= $collection['_embedded']['records'];
         return view('load.load-transactions-home',compact('tran'));
@@ -54,7 +55,7 @@ class MainController extends Controller
         return view('load.load-blocks',compact('block'));
     }
     public function load_blocks_home(){
-        $getoperations = Http::get('https://api.testnet.minepi.com/ledgers?limit=9&order=desc')->json();
+        $getoperations = Http::get('https://api.testnet.minepi.com/ledgers?limit=10&order=desc')->json();
         $collection = collect($getoperations);
         $block= $collection['_embedded']['records'];
         return view('load.load-blocks-home',compact('block'));
@@ -155,13 +156,47 @@ public function account_detail($id){
     $get_detail = Http::get('https://api.testnet.minepi.com/accounts/'.$id)->json();
     $get_offer = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/offers?limit=10&order=desc')->json();
     $get_trade = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/trades?limit=10&order=desc')->json();
+    $get_effect = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/effects?limit=10&order=desc')->json();
+    $get_transaction = Http::get('https://api.testnet.minepi.com/accounts/'.$id.'/transactions?limit=10&order=desc')->json();
     $data['1'] = collect($get_detail_2['_embedded']['records']);
     $data['payments'] = collect($get_detail_payment['_embedded']['records']);
     $data['2'] = collect($get_detail);
     $data['offer']=collect($get_offer['_embedded']['records']);
     $data['trade']=collect($get_trade['_embedded']['records']);
+    $data['effect']=collect($get_effect['_embedded']['records']);
+    $data['transaction']=collect($get_transaction['_embedded']['records']);
 
-    // dd($data['offer']);
+  
+    // dd($data['2']);
    return view('component.detail-account',compact('data'));
 }
+
+public function search(Request $request){
+        $id = $request->get('search');
+        $get1 = Http::get('https://api.testnet.minepi.com/accounts/'.$id)->json();
+        $account = collect($get1);
+        if(!isset($get1['status'])){
+            return Redirect::route('account_detail',$id);
+        }
+        else{
+            $get2 = Http::get('https://api.testnet.minepi.com/transactions/'.$id)->json();
+            $hash = collect($get2);
+            if(!isset($get2['status'])){
+                return Redirect::route('hash_detail',$id);
+            }
+            else{
+                $get3 = Http::get('https://api.testnet.minepi.com/ledgers/'.$id)->json();
+                $block = collect($get3);
+                if(!isset($get3['status'])){
+                    return Redirect::route('block_detail',$id);
+                }
+                else{
+                    return redirect()->back()->with('message', 'Invalid search format, try again !');
+                }
+            }
+        }
+        
+
+}
+
 }

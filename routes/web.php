@@ -40,3 +40,6 @@ Route::get('/block/{value}', [\App\Http\Controllers\MainController::class, 'bloc
 Route::get('/account/{value}', [\App\Http\Controllers\MainController::class, 'account_detail'])->name("account_detail");
 
 
+//search
+Route::post('/search', [\App\Http\Controllers\MainController::class, 'search'])->name("search");
+

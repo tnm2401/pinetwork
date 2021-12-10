@@ -11,7 +11,7 @@
         </div>
         <table class="account-detail">
             <tr>
-                <td  class="detail-title">
+                <td class="detail-title">
                     Public Key:
                 </td>
                 <td class="idRp detail-content">
@@ -38,13 +38,14 @@
     </div>
 
     <div class="space">
+        
         <div class="tabs">
             <div class="tab-item active">Balances</a></div>
             <div class="tab-item"> Payments</a></div>
             <div class="tab-item"> Offers</a></div>
             <div class="tab-item"> Trades</a></div>
             <div class="tab-item"> Effects</a></div>
-            <div class="tab-item"> Operations</a></div>
+            {{-- <div class="tab-item"> Operations</a></div> --}}
             <div class="tab-item"> Transactions</a></div>
             <div class="tab-item"> Signing</a></div>
             <div class="tab-item"> Flags</a></div>
@@ -108,13 +109,13 @@
                 @foreach ($data['payments'] as $d)
                     <tr>
                     <td class="name">
-                        <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
+                        <a href="{{route("account_detail",$d['source_account'])}}">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
                     </td>
                     <td>
                         @if($d['type_i'] != 0)
-                        Pay <span class="pi-coin">{{floatval($d['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a>
+                        Pay <span class="pi-coin">{{floatval($d['amount'])}}</span> π to <a class="name" href="{{route('account_detail',$d['to'])}}"> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a>
                         @else
-                        Created Account <a href="">{{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance {{floatval($d['starting_balance'])}}
+                        Created Account <a href="{{route('account_detail',$d['account'])}}">{{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance {{floatval($d['starting_balance'])}}
                         @endif
                     </td>
                     <td class="id">
@@ -179,8 +180,51 @@
             </table>
             </div>
             <div id="trades" class="tab-pane">
-              <h3>Trades</h3>
-              <p>No trade</p>
+                <div class="top">
+                    <h3>TRADES</h3>
+                    <button>Next Page</button>
+                </div>
+              <table>
+                @if(!$data['trade'])
+                <tr>
+                    <td>
+                        Sell
+                    </td>
+                    <td>
+                        Buy
+                    </td>
+                    <td>
+                        Amount
+                    </td>
+                    <td>
+                        Price
+                    </td>
+                </tr>
+               
+                @foreach ($data['trade'] as $d)
+                     <tr>
+                    <td>
+                        GCOR[<a>OPDA</a>]
+                    </td>
+                    <td>
+                        Test-π
+                    </td>
+                    <td>
+                        0.0001000    
+                    </td>
+                    <td>
+                        0.0010000
+                    </td>
+                </tr>
+                @endforeach
+                @else
+                <tr>
+                       <td>
+                        No trades
+                       </td>
+                </tr>
+                @endif
+            </table>
             </div>
             <div id="hieu-ung" class="tab-pane fade">
                 <div class="top">
@@ -203,24 +247,55 @@
                     </td>
                   
                 </tr>
+                @foreach ($data['effect'] as $e)
                 <tr>
+                    @if($e['type_i']==10)
                     <td>
-                        account_debited
+                        Signer Created
                     </td>
                     <td>
-                        Số tiền: 100 Test-π
+                        Public Key: <a class="name" href="{{route('account_detail',$e['account'])}}">{{ \Illuminate\Support\Str::limit($e['public_key'], 4, $end='') }}</a> ; Weight: {{$e['weight']}}
                     </td>
+                    @elseif($e['type_i']==0)
+                    <td>
+                        Account Created
+                    </td>
+                    <td>
+                        Amount <span class="pi-coin">{{floatval($e['starting_balance'])}}π</span>
+                    </td>
+                    @elseif($e['type_i']==2)
+                    <td>
+                        Account Credited
+                    </td>
+                    <td>
+                        Amount <span class="pi-coin">{{floatval($e['amount'])}}π</span>
+                    </td>
+                    @elseif($e['type_i']==3)
+                    <td>
+                        Account Debited
+                    </td>
+                    <td>
+                        Amount <span class="pi-coin">{{floatval($e['amount'])}}π</span>
+                    </td>
+                    @endif
                     <td class="id">
-                        7B11F527355E34D4B850097757C643991220A27341A8312AF856F16833C23E96JSON    
+                       
+                        @php
+                        $id = $e['_links']['operation']['href'];
+                        $get_effect_operation = Http::get($id)->json();
+                        $hashdt = collect($get_effect_operation);
+                       @endphp
+                       <a href="{{route('hash_detail',$hashdt['transaction_hash'])}}"> {{ \Illuminate\Support\Str::limit($hashdt['transaction_hash'], 8, $end='...') }} </a>
                     </td>
                     <td>
-                        1 phút trước
+                        {{ \Carbon\Carbon::parse($e['created_at'])->setTimezone($tz)->diffForHumans() }}
                     </td>
-                   
                 </tr>
+                @endforeach
             </table>
             </div>
-            <div id="hoat-dong" class="tab-pane">
+            
+            {{-- <div id="hoat-dong" class="tab-pane">
                 <div class="top">
                     <h3>OPERATIONS</h3>
                     <button>Next Page</button>
@@ -249,29 +324,37 @@
                             Time
                         </td>
                     </tr>
+                   
+                    @foreach ($data['payments'] as $d)
                     <tr>
-                        <td class="name">
-                            <a href="">CGOR</a>
-                        </td>
-                        <td>
-                            Đã tạo Tài khoản GC75 với số dư 100
-                        </td>
-                        <td class="id">
-                            ac0293ee321c6bd8a0da7f03f24b75a3a06e6aefdd5de882b33e51c1a0a41c8c    
-                        </td>
-                        <td>
-                            create_account
-                        </td>
-                        <td>
-                            1 phút trước
-                        </td>
-                    </tr>
+                    <td class="name">
+                        <a href="{{route("account_detail",$d['source_account'])}}">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
+                    </td>
+                    <td>
+                        @if($d['type_i'] != 0)
+                        Pay <span class="pi-coin">{{floatval($d['amount'])}}</span> π to <a class="name" href="{{route('account_detail',$d['to'])}}"> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a>
+                        @else
+                        Created Account <a href="{{route('account_detail',$d['account'])}}">{{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance {{floatval($d['starting_balance'])}}
+                        @endif
+                    </td>
+                    <td class="id">
+                       <a href="{{route('hash_detail',$d['transaction_hash'])}}"> {{$d['transaction_hash']}}   </a> 
+                    </td>
+                    <td>
+                        {{ ($d['type_i']==1) ? 'Payment' : 'Create Account' }}
+                    </td>
+                    <td>
+                        {{ \Carbon\Carbon::parse($d['created_at'])->setTimezone($tz)->diffForHumans() }}
+                    </td>
+                </tr>
+                @endforeach
                 </table>    
-            </div>
+            </div> --}}
+           
             <div id="giao-dich" class="tab-pane">
                 <div class="top">
                     <h3>TRANSACTIONS</h3>
-                <button>Next page</button>
+                <button>Next Page</button>
                 </div>
                 <table>
                     <tr>
@@ -288,20 +371,23 @@
                             Time
                         </td>
                     </tr>
+                    @foreach ($data['transaction'] as $t)
                     <tr>
                         <td class="idRp">
-                            ac0293ee321c6bd8a0da7f03f24b75a3a06e6aefdd5de882b33e51c1a0a41c8c
+                            <a href="{{route('hash_detail',$t['id'])}}">{{$t['id']}}</a>
                         </td>
                         <td>
-                            4960352
+                            <a href="{{route('block_detail',$t['ledger'])}}">{{$t['ledger']}}</a>
                         </td>
                         <td>
-                            1    
+                            {{$t['operation_count']}}
                         </td>
                         <td>
-                            10 phút trước
+                            {{ \Carbon\Carbon::parse($t['created_at'])->SetTimezone($tz)->diffForHumans() }}
                         </td>
                     </tr>
+                    @endforeach
+                 
                 </table>
             </div>
             <div id="ky-ket" class="tab-pane">
@@ -324,13 +410,13 @@
                             </tr>
                             <tr>
                                 <td>
-                                    <a href="">GCOR</a>
+                                    <a href="{{route('account_detail',$data['2']['signers']['0']['key'])}}">{{ \Illuminate\Support\Str::limit($data['2']['signers']['0']['key'], 4, $end='') }}</a>
                                 </td>
                                 <td>
-                                    1
+                                    {{$data['2']['signers']['0']['weight']}}
                                 </td>
                                 <td>
-                                    ed25519_public_key
+                                    {{$data['2']['signers']['0']['type']}}
                                 </td>
                             </tr>
                         </table>
@@ -344,9 +430,9 @@
                                 <td>High</td>
                             </tr>
                             <tr>
-                                <td>0</td>
-                                <td>0</td>
-                                <td>0</td>
+                                <td> {{$data['2']['thresholds']['low_threshold']}}</td>
+                                <td> {{$data['2']['thresholds']['med_threshold']}}</td>
+                                <td> {{$data['2']['thresholds']['high_threshold']}}</td>
                             </tr>
                         </table>
                     </div>
@@ -358,7 +444,9 @@
                 </div>
                 <table>
                     <tr><td>Name</td><td>Value</td></tr>
-                    <tr><td>auth_required</td><td>false</td></tr>
+                    <tr><td>auth_required</td><td>{{ $data['2']['flags']['auth_required']==false ? 'False' : 'True' }}</td></tr>
+                    <tr><td>auth_revocable	</td><td> {{ $data['2']['flags']['auth_revocable']==false ? 'False' : 'True' }}</td></tr>
+                    <tr><td>auth_immutable</td><td>{{ $data['2']['flags']['auth_immutable']==false ? 'False' : 'True' }}</td></tr>
                 </table>
             </div>
             <div id="du-lieu" class="tab-pane">

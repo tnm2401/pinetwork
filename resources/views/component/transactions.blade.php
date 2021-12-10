@@ -1,6 +1,6 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | Payments
+    Pi Blockexploer | Transactions
 @endsection
 @section('main')
 <div class="s-container main sFDR sJCSB sMgT10">
@@ -39,9 +39,9 @@
                     <a href="{{route('hash_detail',$d['hash'])}}">{{ \Illuminate\Support\Str::limit($d['hash'], 8, $end='...') }}</a>
                 </td>
                
-                <td class="name"> <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a></td>              
+                <td class="name"> <a href="{{route('account_detail',$d['source_account'])}}">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a></td>              
                 <td class="id">
-                    <a href="">{{$d['ledger']}}</a>
+                    <a href="{{route('block_detail',$d['ledger'])}}">{{$d['ledger']}}</a>
                 </td>
                 <td>
                     {{$d['operation_count']}}
@@ -65,6 +65,6 @@
     {
        $('#latest-transactions').load('{{route("load_transactions")}}');
     
-    }, 10000); // refresh every 10000 milliseconds
+    }, 5000); // refresh every 10000 milliseconds
     </script>
 @endsection

@@ -48,7 +48,7 @@
         <div class="latest-transaction">
             <div class="top">
                 <h3>LATEST TRANSACTIONS</h3>
-                <span>VIEW ALL</span>
+             <a href="{{route('get_transactions')}}"> <span>VIEW ALL </span></a>
             </div>
             <table id="latest-transactions">
                 <tr>
@@ -84,7 +84,7 @@
         <div class="latest-block">
             <div class="top">
                 <h3>LATEST BLOCKS</h3>
-                <span>VIEW ALL</span>
+                <a href="{{route('get_blocks')}}">   <span>VIEW ALL</span> </a>
             </div>
             <table id="latest-blocks">
                 <tr>

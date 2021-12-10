@@ -1,6 +1,6 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | Payments
+    Pi Blockexploer | Blocks
 @endsection
 @section('main')
 <div class="s-container main sFDR sJCSB sMgT10">
@@ -29,10 +29,10 @@
            
             <tr>
                 <td >
-                    <a href="">{{$d['sequence']}}</a>
+                    <a href="{{route('block_detail',$d['sequence'])}}">{{$d['sequence']}}</a>
                 </td>
                 <td>
-                    <a href="">{{$d['successful_transaction_count']}}</a> successful  / {{$d['failed_transaction_count']}} failed
+                    <a href="{{route('block_detail',$d['sequence'])}}">{{$d['successful_transaction_count']}}</a> successful  / {{$d['failed_transaction_count']}} failed
                 </td>
                 <td>
                     {{ \Carbon\Carbon::parse($d['closed_at'])->diffForHumans() }}
