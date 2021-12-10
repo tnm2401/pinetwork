@@ -34,7 +34,7 @@
                             Prev Hash	
                         </td>
                         <td class="id">
-                          <a href=""> {{$data['2']['prev_hash']}}</a> 
+                          <a href="{{route('hash_detail',$data['2']['prev_hash'])}}"> {{$data['2']['prev_hash']}}</a> 
                         </td>
                     </tr>
                     <tr>
