@@ -61,11 +61,11 @@
             </tr>
             <tr>
                 <td class="name">
-                   <a href="">{{ \Illuminate\Support\Str::limit($data['1']['source_account'], 4, $end='') }}</a>
+                   <a href="{{route('hash_detail',$data['1']['source_account'])}}">{{ \Illuminate\Support\Str::limit($data['1']['source_account'], 4, $end='') }}</a>
                 </td>
                 <td>
                     @if($data['1']['type_i'] != 0)
-                    Pay<span class="pi-coin">{{floatval($data['1']['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($data['1']['to'], 4, $end='') }}</a>
+                    Pay <span class="pi-coin">{{floatval($data['1']['amount'])}}</span> π to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($data['1']['to'], 4, $end='') }}</a>
                     @else
                     Created Account <a href="">{{ \Illuminate\Support\Str::limit($data['1']['account'], 4, $end='') }}</a> with balance {{floatval($data['1']['starting_balance'])}}
                     @endif

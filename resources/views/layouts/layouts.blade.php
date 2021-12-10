@@ -16,12 +16,22 @@
                     <i class="fas fa-sync-alt"></i> Refresh
                     </div>
                 </a>
+                <form action="{{route('search')}}" method="POST">
+                    @csrf
                 <div class="search">
-                    <input class="form-control" type="text" placeholder="Search by Account / Transaction / ...">
+                    <input class="form-control" name="search" type="search" placeholder="Search by Account / Transaction / ...">
                     <button><i class="fas fa-search"></i></button>
+                </form>
                 </div>
             </div>
         </div>
+        <!--!------>
+        @if(session()->has('message'))
+    <div class="alert alert-success">
+        {{ session()->get('message') }}
+    </div>
+    @endif
+      <!--!------>
     @yield('main')
     @include('layouts.footer')
 

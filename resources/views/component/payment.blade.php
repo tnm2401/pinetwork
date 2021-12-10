@@ -35,16 +35,16 @@
            
             <tr>
                 <td class="name">
-                    <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
+                    <a href="{{route('account_detail',$d['source_account'])}}">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
                 </td>
                 @if($d['type']=='payment')
-                <td>Pay <span class="pi-coin">{{floatval($d['amount'])}}π</span> to <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a></td>
+                <td>Pay <span class="pi-coin">{{floatval($d['amount'])}}π</span> to <a class="name" href="{{route('account_detail',$d['to'])}}"> {{ \Illuminate\Support\Str::limit($d['to'], 4, $end='') }}</a></td>
                 @else
-                <td>Created Account <a class="name" href=""> {{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance
+                <td>Created Account <a class="name" href="{{route('account_detail',$d['account'])}}"> {{ \Illuminate\Support\Str::limit($d['account'], 4, $end='') }}</a> with balance
                     <span class="pi-coin">{{floatval($d['starting_balance'])}}π</span>   </td>
                 @endif
                 <td class="id">
-                 <a href="">{{$d['transaction_hash']}}</a>   
+                 <a href="{{route('hash_detail',$d['transaction_hash'])}}">{{$d['transaction_hash']}}</a>   
                 </td>
                 <td>
                   {{ ($d['type']=='payment') ? 'Payment' : 'Create Account' }}

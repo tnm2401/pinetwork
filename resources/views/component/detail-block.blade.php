@@ -103,7 +103,7 @@
                             Protocol Version	
                         </td>
                         <td>
-                            {{($data['2']['protocol_version'])}} π
+                            {{($data['2']['protocol_version'])}} 
                         </td>
                     </tr>
                 </table>
@@ -136,13 +136,14 @@
                     <a href="{{route('hash_detail',$d['hash'])}}">{{$d['hash']}}</a>
                 </td>
                 <td class="name">
-                    <a href="">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
+                    <a href="{{route('account_detail',$d['source_account'])}}">{{ \Illuminate\Support\Str::limit($d['source_account'], 4, $end='') }}</a>
                 </td>
                 <td>
                     {{$d['operation_count']}}
                 </td>
                 <td>
-                    <a href=""> {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}</a>
+            
+                 {{ \Carbon\Carbon::parse($d['created_at'])->diffForHumans() }}
                 </td>
             </tr>
             @endforeach
