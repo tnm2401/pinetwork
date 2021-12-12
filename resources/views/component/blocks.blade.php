@@ -53,6 +53,6 @@
     {
        $('#latest-blocks').load('{{route("load_blocks")}}');
     
-    }, 10000); // refresh every 10000 milliseconds
+    }, 60000); // refresh every 10000 milliseconds
     </script>
 @endsection

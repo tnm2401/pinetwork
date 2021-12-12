@@ -69,6 +69,6 @@
     {
        $('#latest-payments').load('{{route("load_payment")}}');
     
-    }, 10000); // refresh every 10000 milliseconds
+    }, 20000); // refresh every 10000 milliseconds
     </script>
 @endsection
