@@ -132,7 +132,7 @@
             </tr>
             @foreach ($data['1'] as $d)
             <tr>
-                <td>
+                <td class="id">
                     <a href="{{route('hash_detail',$d['hash'])}}">{{$d['hash']}}</a>
                 </td>
                 <td class="name">

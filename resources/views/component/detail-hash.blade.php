@@ -7,7 +7,7 @@
 <div class="s-container main sFDR sJCSB sMgT10">
     <div class="space">
         <div class="top">
-            <h3>TRANSACTION <span>{{$data['2']['hash']}}</span></h3>
+            <h3>TRANSACTION <span class="idRp">{{$data['2']['hash']}}</span></h3>
         </div>
         <table>
            

@@ -1,3 +1,7 @@
+@font-face {
+    font-family: 'Space Mono';
+    src: url("../font/SpaceMono-Regular.ttf");
+}
 :root{
     --mainGradient: linear-gradient( to right, #01ffff, #7ffffe, #b1ffff, #e8f9ff, #99e7f3, #77d5ee);
     --piGradient: linear-gradient(to right, #8c3590, #2c4982);
@@ -213,8 +217,31 @@ body{
 }
 /* END TAB STYLE */
 @media screen and (max-width: 768px) {
+    body{
+        font-size: 12px;
+    }
     .ky-ket .detail, .ky-ket .nguong{
         width: 100%;
+    }
+    .s-alert-info{
+        position: fixed;
+        top: -120%;
+        width: calc(100% - 20px);
+        font-size: 12px;
+        left: 10px;
+        z-index: 999;
+        padding: 10px 20px;
+        background: rgb(219, 255, 253);
+        border-bottom: #5d95fc solid 3px;
+        color: rgb(38, 64, 119);
+        font-weight: 700;
+        backdrop-filter:blur(10px);
+        animation: 7s alert_top_right ease-in-out;
+        display: inline-block;
+    }
+    .tableRp{
+        max-width: 100%;
+        overflow: auto;
     }
 }
 
@@ -309,6 +336,7 @@ body{
     border: none;
     outline: none;
     background: #00000000;
+    font-family: var(--mainFont);
 }
 .main table{
     width: 100%;
@@ -442,6 +470,12 @@ body{
     }
     .idRp{
         max-width: 100px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+    .top h3 span.idRp{
+        display: block;
+        max-width: calc(100% - 20px);
         text-overflow: ellipsis;
         overflow: hidden;
     }
