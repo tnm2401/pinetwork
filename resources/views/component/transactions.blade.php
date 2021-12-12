@@ -65,6 +65,6 @@
     {
        $('#latest-transactions').load('{{route("load_transactions")}}');
     
-    }, 5000); // refresh every 10000 milliseconds
+    }, 20000); // refresh every 10000 milliseconds
     </script>
 @endsection

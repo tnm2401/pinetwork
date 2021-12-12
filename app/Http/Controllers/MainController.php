@@ -112,7 +112,7 @@ class MainController extends Controller
     if($request->get("previous")){
        $token = $request->get("previous");
        $url = Http::get('https://api.testnet.minepi.com/ledgers?cursor='.$token.'&limit=30&order=desc')->json();
-       $collection = collect($url);
+       $collection =    ($url);
        $data= $collection['_embedded']['records'];
     }
     else{

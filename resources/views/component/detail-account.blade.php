@@ -86,7 +86,7 @@
             <div class="tab-pane">
                 <div class="top">
                     <h3>PAYMENTS</h3>
-                    <button>Next page</button>
+                    {{-- <button>Next page</button> --}}
                 </div>
               <table>
                 <tr>
@@ -135,7 +135,7 @@
             <div class="tab-pane">
                 <div class="top">
                     <h3>OFFERS</h3>
-                    <button>Next Page</button>
+                    {{-- <button>Next Page</button> --}}
                 </div>
               <table>
                 @if(!$data['offer'])
@@ -182,7 +182,7 @@
             <div id="trades" class="tab-pane">
                 <div class="top">
                     <h3>TRADES</h3>
-                    <button>Next Page</button>
+                    {{-- <button>Next Page</button> --}}
                 </div>
               <table>
                 @if(!$data['trade'])
@@ -354,7 +354,7 @@
             <div id="giao-dich" class="tab-pane">
                 <div class="top">
                     <h3>TRANSACTIONS</h3>
-                <button>Next Page</button>
+                {{-- <button>Next Page</button> --}}
                 </div>
                 <table>
                     <tr>
@@ -460,12 +460,4 @@
         
     </div>
 </div>
-<script type="text/javascript">
-    var auto_refresh = setInterval(
-    function ()
-    {
-       $('#latest-transactions').load('{{route("load_transactions")}}');
-    
-    }, 10000); // refresh every 10000 milliseconds
-    </script>
 @endsection
