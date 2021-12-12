@@ -12,7 +12,7 @@
             @csrf
             <button class="none" type="submit"> <span>PREVIOUS PAGE  <i class="fas fa-arrow-circle-right"></i></span></button>
         </div>
-        <table id="latest-transactions">
+        <table class="tableRpHideColD" id="latest-transactions">
             <tr>
                 <th>
                     #

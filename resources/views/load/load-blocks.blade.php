@@ -17,7 +17,7 @@
         <a href="{{route('block_detail',$d['sequence'])}}">{{$d['sequence']}}</a>
     </td>
     <td>
-        <a href="{{route('block_detail',$d['sequence'])}}">{{$d['successful_transaction_count']}}</a> successful  / {{$d['failed_transaction_count']}} failed
+        <a href="{{route('block_detail',$d['sequence'])}}">{{$d['successful_transaction_count']}}</a> successful  / <span style="color: #ff6363;">{{$d['failed_transaction_count']}}</span> failed
     </td>
     <td>
         {{ \Carbon\Carbon::parse($d['closed_at'])->diffForHumans() }}
