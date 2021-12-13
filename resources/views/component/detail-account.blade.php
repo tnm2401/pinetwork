@@ -15,7 +15,7 @@
                     Public Key:
                 </td>
                 <td class="idRp detail-content">
-                    {{$data['2']['id']}}
+                    <a href="">{{$data['2']['id']}}</a>
                 </td>
             </tr>
             <tr>
