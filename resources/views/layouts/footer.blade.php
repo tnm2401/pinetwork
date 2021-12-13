@@ -2,8 +2,8 @@
 
 <div class="footer">
   <div class="s-container footer-data">
-     <span>Shin | 2021</span>
-     <a href="">SrcCode</a>
+     <span>Shin & Min made with ♥ | 2021</span>
+     {{-- <a href="">SrcCode</a> --}}
   </div>
 </div>
 

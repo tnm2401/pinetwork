@@ -11,6 +11,14 @@
 <meta name="google" content="nositelinkssearchbox" />
 <meta name="author" content="Pinetwork.Trade | Pi Blockchain Explorer">
 <meta name="copyright" content="Pinetwork.Trade | Pi Blockchain Explorer [contact.pinetworktrade@gmail.com]">
-<meta name="keywords" content="Pinetwork | Pi Blockchain Explorer | Pi Trade | Minepi | Pinetwork.trade">
+<meta name="keywords" content="Pinetwork | Pi Blockchain Explorer | Pi Trade | Minepi | Pinetwork.trade | Sàn Pinetwork | Giá Pinetwork | Pinetwork Nodes | Pinetwork Refernal Code | Giá tiền Pinetwork | Giao dịch Pi | Pi có giá trị không | Pi lừa đảo | Mua Pi | Bán Pi | Thu gom pi | Mua bán Pi giá rẻ">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-98HY55KKVJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-98HY55KKVJ');
+</script>
 

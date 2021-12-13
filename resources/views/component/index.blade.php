@@ -1,6 +1,6 @@
 @extends('layouts.layouts')
 @section('title')
-    Pi Blockexploer | Home
+  Pinetwork.Trade | Pi Blockexploer | Home
 @endsection
 @section('main')
 
